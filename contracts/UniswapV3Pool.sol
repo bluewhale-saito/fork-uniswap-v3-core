@@ -857,6 +857,10 @@ contract UniswapV3Pool is IUniswapV3Pool, NoDelegateCall {
 
         address feeRecipient = IUniswapV3Factory(factory).feeTo();
         require(recipient == feeRecipient, "recipient must be feeTo");
+        require(
+            msg.sender == IUniswapV3Factory(factory).owner() || msg.sender == feeRecipient,
+            "Not authorized"
+        );
 
         if (amount0 > 0) {
             if (amount0 == protocolFees.token0) amount0--; // ensure that the slot is not cleared, for gas savings
