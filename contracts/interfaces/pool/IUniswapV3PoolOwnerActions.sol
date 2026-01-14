@@ -16,7 +16,7 @@ interface IUniswapV3PoolOwnerActions {
     /// @return amount0 The protocol fee collected in token0
     /// @return amount1 The protocol fee collected in token1
     function collectProtocol(
-        // address recipient,
+        address recipient,
         uint128 amount0Requested,
         uint128 amount1Requested
     ) external returns (uint128 amount0, uint128 amount1);
